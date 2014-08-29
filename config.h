@@ -1,0 +1,4 @@
+#define GREEN_BTN_PORT PORTB
+#define GREEN_BTN_PIN 6
+#define RED_BTN_PORT PORTB
+#define RED_BTN_PIN 7
