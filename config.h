@@ -36,3 +36,5 @@
 #define HOOK_IN PIND
 
 #define DEBOUNCE_TIMER_LOOPS 5
+
+#define PRESSTIME 100
