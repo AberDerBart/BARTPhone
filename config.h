@@ -37,4 +37,4 @@
 
 #define DEBOUNCE_TIMER_LOOPS 5
 
-#define PRESSTIME 100
+#define PRESSTIME 500

@@ -25,6 +25,19 @@ int main(void){
 	setupPins();
 
 	while(1){
+		redButton();
+		dial(1);
+		dial(4);
+		dial(7);
+		dial(0);
+		dial(2);
+		dial(5);
+		dial(8);
+		dial(0);
+		dial(3);
+		dial(6);
+		dial(9);
+		dial(0);
 		stateHook=HOOK_IN & (1 << HOOK_PIN);
 
 		if(stateHook!=lastStateHook){
@@ -95,6 +108,7 @@ void setDigitCol(char col){
 
 void dial(char digit){
 	//dials the digit digit
+	_delay_ms(PRESSTIME);
 
 	if(digit==0){
 		setDigitRow(3);
@@ -116,10 +130,10 @@ void dial(char digit){
 		}
 	}
 
-	_delay_ms(PRESSTIME);
 	DIGIT_PORT |= (1 << DIGIT_PIN);
 	_delay_ms(PRESSTIME);
 	DIGIT_PORT &= ~(1 << DIGIT_PIN);
+	setDigitCol(3);
 }
 
 void setupPins(){
