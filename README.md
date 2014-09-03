@@ -1,5 +1,7 @@
-mobile-dialplate
-================
+BARTPhone
+=========
+
+BARTPhone is a pseudo-acronym for Bundespost Awesome Retro TelePhone.
 
 The purpose of this project is to put an old mobile phone
 in an even older dialplate phone.
