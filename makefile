@@ -1,7 +1,7 @@
 CCFLAGS=-DF_CPU=1000000
 MMCU=attiny2313
 OBJS=main.o
-TARGET=mobileDP
+TARGET=BARTphone
 
 ${TARGET}.hex:${TARGET}.elf
 	avr-objcopy -O ihex -R .eeprom ${TARGET}.elf ${TARGET}.hex 
@@ -9,7 +9,7 @@ ${TARGET}.hex:${TARGET}.elf
 ${TARGET}.elf: ${OBJS}
 	avr-gcc ${CCFLAGS} -mmcu=${MMCU} -Os -o${TARGET}.elf ${OBJS}
 
-%.o: %.c
+%.o: %.c config.h
 	avr-gcc -c ${CCFLAGS} -mmcu=${MMCU} -Os -o $@ $<
 
 %.ao: %.S

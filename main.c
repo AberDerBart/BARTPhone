@@ -25,19 +25,6 @@ int main(void){
 	setupPins();
 
 	while(1){
-		redButton();
-		dial(1);
-		dial(4);
-		dial(7);
-		dial(0);
-		dial(2);
-		dial(5);
-		dial(8);
-		dial(0);
-		dial(3);
-		dial(6);
-		dial(9);
-		dial(0);
 		stateHook=HOOK_IN & (1 << HOOK_PIN);
 
 		if(stateHook!=lastStateHook){
