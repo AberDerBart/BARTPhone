@@ -23,18 +23,18 @@
 #define DIGIT_DDR DDRB
 
 #define DIAL_PORT PORTD
-#define DIAL_PIN 2
+#define DIAL_PIN 5
 #define DIAL_DDR DDRD
 #define DIAL_IN PIND
 #define TICK_PORT PORTD
-#define TICK_PIN 3
+#define TICK_PIN 4
 #define TICK_DDR DDRD
 #define TICK_IN PIND
 #define HOOK_PORT PORTD
-#define HOOK_PIN 5
+#define HOOK_PIN 2
 #define HOOK_DDR DDRD
 #define HOOK_IN PIND
 
-#define DEBOUNCE_TIMER_LOOPS 5
+#define DEBOUNCE_TIMER_LOOPS 10
 
-#define PRESSTIME 500
+#define PRESSTIME 50

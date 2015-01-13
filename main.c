@@ -14,26 +14,48 @@ void setupTimer();
 
 int main(void){
 	char lastStateHook;
-
 	char stateHook;
-
 	char stableStateHook;
-
 	char counterHook;
+
+	char stateDial;
+	char lastStateDial;
+	char stableStateDial;
+	char counterDial;
+
+	char stateTick;
+	char lastStateTick;
+	char stableStateTick;
+	char counterTick;
+
+	char counterDigit;
 
 	setupTimer();
 	setupPins();
 
 	while(1){
 		stateHook=HOOK_IN & (1 << HOOK_PIN);
+		stateDial=DIAL_IN & (1 << DIAL_PIN);
+		stateTick=TICK_IN & (1 << TICK_PIN);
 
 		if(stateHook!=lastStateHook){
 			counterHook=0;
 			lastStateHook=stateHook;
 		}
+		if(stateDial!=lastStateDial){
+			counterDial=0;
+			lastStateDial=stateDial;
+		}
+		if(stateTick!=lastStateTick){
+			counterTick=0;
+			lastStateTick=stateTick;
+		}
+
 		if(TIFR & 0x02){
 			TIFR |= 0x02;
 			counterHook++;
+			counterDial++;
+			counterTick++;
 
 			if(counterHook==DEBOUNCE_TIMER_LOOPS){
 				if(stableStateHook!=stateHook){
@@ -45,10 +67,41 @@ int main(void){
 					}
 				}
 			}
+			if(counterDial==DEBOUNCE_TIMER_LOOPS){
+				if(stableStateDial!=stateDial){
+					stableStateDial=stateDial;
+					if(stableStateDial){
+						if(counterDigit){
+							dial(counterDigit%10);	
+						}
+					}
+				}
+			}
+			
+			if(!stableStateDial){
+				if(counterTick==DEBOUNCE_TIMER_LOOPS){
+					if(stableStateTick!=stateTick){
+						stableStateTick=stateTick;
+						if(stableStateTick){
+							counterDigit++;
+						}
+					}
+				}
+			}else{
+				counterDigit=0;
+			}
+
 			if(counterHook>DEBOUNCE_TIMER_LOOPS){
 				counterHook=DEBOUNCE_TIMER_LOOPS;
 			}
-		}	
+			if(counterDial>DEBOUNCE_TIMER_LOOPS){
+				counterDial=DEBOUNCE_TIMER_LOOPS;
+			}
+			if(counterTick>DEBOUNCE_TIMER_LOOPS){
+				counterTick=DEBOUNCE_TIMER_LOOPS;
+			}
+		}
+
 	}
 
    	return 0;
@@ -153,6 +206,6 @@ void setupPins(){
 
 void setupTimer(){
 	TCCR0A=0x00;	
-	TCCR0B=0x03;
+	TCCR0B=0x02;
 	TIMSK=0x00;
 }
