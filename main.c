@@ -62,8 +62,10 @@ int main(void){
 					stableStateHook=stateHook;
 					if(stableStateHook){
 						greenButton();
+						//dial(1);
 					}else{
 						redButton();
+						//dial(2);
 					}
 				}
 			}

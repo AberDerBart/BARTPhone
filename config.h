@@ -1,9 +1,9 @@
-#define GREEN_BTN_PORT PORTB
-#define GREEN_BTN_PIN 6
-#define GREEN_BTN_DDR DDRB
-#define RED_BTN_PORT PORTB
-#define RED_BTN_PIN 7
-#define RED_BTN_DDR DDRB
+#define GREEN_BTN_PORT PORTD
+#define GREEN_BTN_PIN 3
+#define GREEN_BTN_DDR DDRD
+#define RED_BTN_PORT PORTD
+#define RED_BTN_PIN 2
+#define RED_BTN_DDR DDRD
 
 #define DIGIT_ROW_LOW_PORT PORTB
 #define DIGIT_ROW_LOW_PIN 3
@@ -19,7 +19,7 @@
 #define DIGIT_COL_HIGH_DDR DDRB
 
 #define DIGIT_PORT PORTB
-#define DIGIT_PIN 5
+#define DIGIT_PIN 6
 #define DIGIT_DDR DDRB
 
 #define DIAL_PORT PORTD
@@ -30,11 +30,11 @@
 #define TICK_PIN 4
 #define TICK_DDR DDRD
 #define TICK_IN PIND
-#define HOOK_PORT PORTD
-#define HOOK_PIN 2
-#define HOOK_DDR DDRD
-#define HOOK_IN PIND
+#define HOOK_PORT PORTA
+#define HOOK_PIN 1
+#define HOOK_DDR DDRA
+#define HOOK_IN PINA
 
 #define DEBOUNCE_TIMER_LOOPS 10
 
-#define PRESSTIME 50
+#define PRESSTIME 100
