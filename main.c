@@ -60,7 +60,7 @@ int main(void){
 			if(counterHook==DEBOUNCE_TIMER_LOOPS){
 				if(stableStateHook!=stateHook){
 					stableStateHook=stateHook;
-					if(stableStateHook){
+					if(!stableStateHook){
 						greenButton();
 						//dial(1);
 					}else{
